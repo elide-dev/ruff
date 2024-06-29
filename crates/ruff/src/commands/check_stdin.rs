@@ -1,3 +1,5 @@
+#![cfg(feature = "check")]
+
 use std::path::Path;
 
 use anyhow::Result;

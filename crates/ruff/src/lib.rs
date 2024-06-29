@@ -183,12 +183,16 @@ pub fn run(
             shell.generate(&mut Args::command(), &mut stdout());
             Ok(ExitStatus::Success)
         }
+        #[cfg(feature = "check")]
         Command::Check(args) => check(args, global_options),
+        #[cfg(feature = "format")]
         Command::Format(args) => format(args, global_options),
+        #[cfg(feature = "server")]
         Command::Server(args) => server(args),
     }
 }
 
+#[cfg(feature = "format")]
 fn format(args: FormatCommand, global_options: GlobalConfigArgs) -> Result<ExitStatus> {
     let (cli, config_arguments) = args.partition(global_options)?;
 
@@ -199,6 +203,7 @@ fn format(args: FormatCommand, global_options: GlobalConfigArgs) -> Result<ExitS
     }
 }
 
+#[cfg(feature = "server")]
 fn server(args: ServerCommand) -> Result<ExitStatus> {
     let ServerCommand { preview } = args;
 
@@ -211,6 +216,7 @@ fn server(args: ServerCommand) -> Result<ExitStatus> {
     commands::server::run_server(preview, worker_threads)
 }
 
+#[cfg(feature = "check")]
 pub fn check(args: CheckCommand, global_options: GlobalConfigArgs) -> Result<ExitStatus> {
     let (cli, config_arguments) = args.partition(global_options)?;
 

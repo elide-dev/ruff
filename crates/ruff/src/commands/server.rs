@@ -1,3 +1,5 @@
+#![cfg(feature = "server")]
+
 use std::num::NonZeroUsize;
 
 use crate::ExitStatus;

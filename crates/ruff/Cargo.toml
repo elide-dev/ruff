@@ -15,12 +15,12 @@ default-run = "ruff"
 [dependencies]
 ruff_cache = { workspace = true }
 ruff_diagnostics = { workspace = true }
-ruff_linter = { workspace = true, features = ["clap"] }
+ruff_linter = { workspace = true, features = ["clap"], optional = true }
 ruff_macros = { workspace = true }
 ruff_notebook = { workspace = true }
 ruff_python_ast = { workspace = true }
-ruff_python_formatter = { workspace = true }
-ruff_server = { workspace = true }
+ruff_python_formatter = { workspace = true, optional = true }
+ruff_server = { workspace = true, optional = true }
 ruff_source_file = { workspace = true }
 ruff_text_size = { workspace = true }
 ruff_workspace = { workspace = true }
@@ -78,3 +78,10 @@ tikv-jemallocator = { workspace = true }
 
 [lints]
 workspace = true
+
+[features]
+default = ["all"]
+all = ["check", "format", "server"]
+check = ["ruff_linter"]
+format = ["ruff_python_formatter"]
+server = ["ruff_server"]

@@ -1,3 +1,5 @@
+#![cfg(feature = "check")]
+
 use std::fmt::Write;
 use std::io;
 use std::path::{Path, PathBuf};

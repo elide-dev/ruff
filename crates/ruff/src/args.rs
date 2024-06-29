@@ -93,6 +93,7 @@ pub struct Args {
 #[derive(Debug, clap::Subcommand)]
 pub enum Command {
     /// Run Ruff on the given files or directories (default).
+    #[cfg(feature = "check")]
     Check(CheckCommand),
     /// Explain a rule (or all rules).
     #[command(group = clap::ArgGroup::new("selector").multiple(false).required(true))]
@@ -118,6 +119,7 @@ pub enum Command {
         output_format: HelpFormat,
     },
     /// List all supported upstream linters.
+    #[cfg(feature = "check")]
     Linter {
         /// Output format
         #[arg(long, value_enum, default_value = "text")]
@@ -129,8 +131,10 @@ pub enum Command {
     #[clap(hide = true)]
     GenerateShellCompletion { shell: clap_complete_command::Shell },
     /// Run the Ruff formatter on the given files or directories.
+    #[cfg(feature = "format")]
     Format(FormatCommand),
     /// Run the language server.
+    #[cfg(feature = "server")]
     Server(ServerCommand),
     /// Display Ruff's version
     Version {

@@ -1,3 +1,5 @@
+#![cfg(feature = "format")]
+
 use std::io::stdout;
 use std::path::Path;
 
