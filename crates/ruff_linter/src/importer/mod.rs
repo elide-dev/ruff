@@ -340,7 +340,7 @@ impl<'a> Importer<'a> {
     ) -> Result<(Edit, String), ResolutionError> {
         if let Some(stmt) = self
             .find_import_from(symbol.module, at)
-            .filter(|stmt| except != Some(stmt))
+            .filter(|stmt| except != Some(*stmt))
         {
             // Case 1: `from functools import lru_cache` is in scope, and we're trying to reference
             // `functools.cache`; thus, we add `cache` to the import, and return `"cache"` as the
