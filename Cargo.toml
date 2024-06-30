@@ -11,6 +11,12 @@ repository = "https://github.com/astral-sh/ruff"
 authors = ["Charlie Marsh <charlie.r.marsh@gmail.com>"]
 license = "MIT"
 
+[patch.crates-io]
+## Version Pins / Overrides
+base64 = { git = "https://github.com/elide-tools/rust-base64", rev = "e14400697453bcc85997119b874bc03d9601d0af" }
+chic = { git = "https://github.com/elide-tools/chic", rev = "a69a935636126d8d758e3952484347ee4cdcee62" }
+libcst = { git = "https://github.com/elide-tools/libcst", rev = "a2dff05ebfd5ccebfa6a57ac4417cccea5a33515" }
+
 [workspace.dependencies]
 ruff = { path = "crates/ruff" }
 ruff_cache = { path = "crates/ruff_cache" }
