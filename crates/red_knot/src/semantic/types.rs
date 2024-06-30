@@ -350,14 +350,12 @@ type ModuleStoreRef<'a> = dashmap::mapref::one::Ref<
     'a,
     FileId,
     ModuleTypeStore,
-    std::hash::BuildHasherDefault<rustc_hash::FxHasher>,
 >;
 
 type ModuleStoreRefMut<'a> = dashmap::mapref::one::RefMut<
     'a,
     FileId,
     ModuleTypeStore,
-    std::hash::BuildHasherDefault<rustc_hash::FxHasher>,
 >;
 
 #[derive(Debug)]
